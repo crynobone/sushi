@@ -19,16 +19,22 @@ jobs:
         include:
           - laravel: 10.*
             testbench: 8.*
+            dbal: 3.*
           - laravel: 9.*
             testbench: 7.*
+            dbal: 3.*
           - laravel: 8.*
             testbench: 6.*
+            dbal: 3.*
           - laravel: 7.*
             testbench: 5.*
+            dbal: 2.*
           - laravel: 6.*
             testbench: 4.*
+            dbal: 2.*
           - laravel: 5.8.*
             testbench: 3.8.*
+            dbal: 2.*
         exclude:
           - laravel: 5.8.*
             php: '8.0'
@@ -89,6 +95,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "illuminate/contracts:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "doctrine/dbal:${{ matrix.dbal }}" --dev --no-interaction --no-update
           composer install --prefer-dist --no-interaction --no-suggest
 
       - name: Run tests
