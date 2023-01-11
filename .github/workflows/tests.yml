@@ -98,5 +98,8 @@ jobs:
           composer require "doctrine/dbal:${{ matrix.dbal }}" --dev --no-interaction --no-update
           composer install --prefer-dist --no-interaction --no-suggest
 
+      - name: Installed dependencies
+        run: composer show -D
+
       - name: Run tests
         run: vendor/bin/phpunit --exclude-group skipped
